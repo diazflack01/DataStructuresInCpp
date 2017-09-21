@@ -179,3 +179,22 @@ TEST(TestCircularSingleLinkedList, deleteNodeAfterKey_shouldDeleteNextElemWhenSe
 	EXPECTED.erase(EXPECTED.begin()+2);
 	ASSERT_TRUE(helper::isCSLEqual(EXPECTED, intCSL.getHead()));
 }
+
+TEST(TestCircularSingleLinkedList, clear)
+{
+	CircularSingleLinkedList<int> intCSL;
+	ASSERT_EQ(true, (nullptr == intCSL.getHead() && nullptr == intCSL.getTail()));
+	intCSL.insertFront(0, 1);
+	intCSL.clear();
+	ASSERT_EQ(true, (nullptr == intCSL.getHead() && nullptr == intCSL.getTail()));
+	intCSL.insertFront(0, 1);
+	intCSL.insertFront(1, 2);
+	intCSL.clear();
+	ASSERT_EQ(true, (nullptr == intCSL.getHead() && nullptr == intCSL.getTail()));
+	for(auto i = 9; i >= 0; --i)
+	{
+		intCSL.insertFront(i, i*2);
+	}
+	intCSL.clear();
+	ASSERT_EQ(true, (nullptr == intCSL.getHead() && nullptr == intCSL.getTail()));
+}

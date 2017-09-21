@@ -175,8 +175,34 @@ void CircularSingleLinkedList<T>::deleteNodeAfterKey(unsigned k)
 	}
 }
 
-//template<typename T>
-//void CircularSingleLinkedList<T>::clear();
+template<typename T>
+void CircularSingleLinkedList<T>::clear()
+{
+	if(nullptr == _head)
+	{
+		return;
+	}
+	else if(_head == _tail)
+	{
+		delete _head;
+		_head = nullptr;
+		_tail = nullptr;
+	}
+	else
+	{
+		Node<T>* crawler = _head->next;
+		Node<T>* nodeToDel = crawler;
+		while(crawler != _head)
+		{
+			crawler = crawler->next;
+			delete nodeToDel;
+			nodeToDel = crawler;
+		}
+		delete nodeToDel;
+		_head = nullptr;
+		_tail = nullptr;
+	}
+}
 
 template<typename T>
 void CircularSingleLinkedList<T>::printAll()
