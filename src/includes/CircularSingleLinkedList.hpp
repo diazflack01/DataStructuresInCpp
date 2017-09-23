@@ -21,7 +21,7 @@
  * 	-_head: Node<T>*
  * 	-_tail: Node<T>*
  * }
- * CircularSingleLinkedList *-- class Node
+ * CircularSingleLinkedList *-- "2" Node
  * @enduml
  * */
 
