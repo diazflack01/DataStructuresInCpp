@@ -24,7 +24,7 @@
  * */
 
 template<typename T>
-class ForwardIterator : public std::iterator<std::input_iterator_tag, T, ptrdiff_t, T*, T&>
+class ForwardIterator : public std::iterator<std::forward_iterator_tag, T, ptrdiff_t, T*, T&>
 {
 public:
 	ForwardIterator(): mPtr(nullptr) {}
