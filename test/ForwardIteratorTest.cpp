@@ -2,8 +2,9 @@
 
 #include <ForwardIterator.hpp>
 
+namespace {
 int intArrayTestInput[] = {1, 2, 3, 4, 5};
-
+}
 TEST(ForwardIteratorTest, constructorWhenDefaultInitialized)
 {
 	ForwardIterator<int> fItr;
