@@ -51,7 +51,13 @@ public:
 	RandomAccessIterator<T>& operator++();
 	RandomAccessIterator<T>& operator--();
 	RandomAccessIterator<T> operator+(const size_t movement);
+	const RandomAccessIterator<T> operator+(const size_t movement) const;
+	ptrdiff_t operator+(const RandomAccessIterator<T>& rhs);
+	const ptrdiff_t operator+(const RandomAccessIterator<T>& rhs) const;
 	RandomAccessIterator<T> operator-(const size_t movement);
+	const RandomAccessIterator<T> operator-(const size_t movement) const;
+	ptrdiff_t operator-(const RandomAccessIterator<T>& rhs);
+	const ptrdiff_t operator-(const RandomAccessIterator<T>& rhs) const;
 	bool operator>(const RandomAccessIterator<T>& rhs) const;
 	bool operator<(const RandomAccessIterator<T>& rhs) const;
 	bool operator<=(const RandomAccessIterator<T>& rhs) const;
@@ -88,7 +94,7 @@ bool RandomAccessIterator<T>::operator==(const RandomAccessIterator<T>& rhs) con
 template<typename T>
 bool RandomAccessIterator<T>::operator!=(const RandomAccessIterator<T>& rhs) const
 {
-	return !(this == rhs);
+	return !(*this == rhs);
 }
 
 template<typename T>
@@ -130,9 +136,45 @@ RandomAccessIterator<T> RandomAccessIterator<T>::operator+(const size_t movement
 }
 
 template<typename T>
+const RandomAccessIterator<T> RandomAccessIterator<T>::operator+(const size_t movement) const
+{
+	return RandomAccessIterator<T>((this->mPtr + movement));
+}
+
+template<typename T>
+ptrdiff_t RandomAccessIterator<T>::operator+(const RandomAccessIterator<T>& rhs)
+{
+	return (this->mPtr + rhs.getConstPtr());
+}
+
+template<typename T>
+const ptrdiff_t RandomAccessIterator<T>::operator+(const RandomAccessIterator<T>& rhs) const
+{
+	return (this->mPtr + rhs.getConstPtr());
+}
+
+template<typename T>
 RandomAccessIterator<T> RandomAccessIterator<T>::operator-(const size_t movement)
 {
 	return RandomAccessIterator<T>((this->mPtr - movement));
+}
+
+template<typename T>
+const RandomAccessIterator<T> RandomAccessIterator<T>::operator-(const size_t movement) const
+{
+	return RandomAccessIterator<T>((this->mPtr - movement));
+}
+
+template<typename T>
+ptrdiff_t RandomAccessIterator<T>::operator-(const RandomAccessIterator<T>& rhs)
+{
+	return (this->mPtr - rhs.getConstPtr());
+}
+
+template<typename T>
+const ptrdiff_t RandomAccessIterator<T>::operator-(const RandomAccessIterator<T>& rhs) const
+{
+	return (this->mPtr - rhs.getConstPtr());
 }
 
 template<typename T>
